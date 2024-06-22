@@ -38,43 +38,40 @@ function removeAllItems(list){
     deleteItem( item.id );
   }
 }
-
-//console.log(list);
-
+ 
 export default function App(){
   const [ items, setItems ] = useState(list);
 
   function handleAdditems(item){
+    const newItemRow = { description: item.description, quantity: item.quantity, packed: false };
+
     setItems((items) => [ ...items, item ]);
+    addItem( newItemRow );
+ 
   }
 
   function handleDeleteItem(id){
     setItems((items) => items.filter((item) => item.id !== id ));
-
     deleteItem( id );
-  
   }
  
-async function handleToggleItem(id){
+  async function handleToggleItem(id){
 
-    const updateItemPacked = {packed: null};
+      const updateItemPacked = {packed: null};
+      const currItem = await fetchDBbyId( dbName, id);
+      currItem.packed ? updateItemPacked.packed = false : updateItemPacked.packed = true;
 
-    const currItem = await fetchDBbyId( dbName, id);
+      setItems((items) => 
+        items.map((item)=> 
+          item.id === id ? { ...item, packed: !item.packed } : item
+        )
+      );
 
-    currItem.packed ? updateItemPacked.packed = false : updateItemPacked.packed = true;
-
-    setItems((items) => 
-      items.map((item)=> 
-        item.id === id ? { ...item, packed: !item.packed } : item
-      )
-    );
- 
-     updateItem( id, updateItemPacked );
+      updateItem( id, updateItemPacked );
 
   }
  
-function handleClearList(){
-
+  function handleClearList(){
     const confirmed = window.confirm("Are you sure you want to delete all items?");
 
     if( confirmed ) {

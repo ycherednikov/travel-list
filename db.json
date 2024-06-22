@@ -1,0 +1,28 @@
+{
+  "list": [
+    {
+      "description": "asdasd",
+      "quantity": 1,
+      "packed": true,
+      "id": 1
+    },
+    {
+      "description": "asdasdasd13",
+      "quantity": 6,
+      "packed": true,
+      "id": 2
+    },
+    {
+      "description": "asdasd",
+      "quantity": 1,
+      "packed": false,
+      "id": 4
+    },
+    {
+      "description": "sadasd",
+      "quantity": 1,
+      "packed": false,
+      "id": 5
+    }
+  ]
+}

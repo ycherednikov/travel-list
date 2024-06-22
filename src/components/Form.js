@@ -13,27 +13,10 @@ export default function Form({ onAddItems }){
   
       const newItem = { description, quantity, packed: false, id: Date.now() }
 
-      const newItemRow = { description: description, quantity: quantity, packed: false };
-
-      function addDbRow(){
- 
-        fetch('http://localhost:3000/list', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newItemRow),
-        })
-        .then(response => response.json())
-        // .then(newDB => console.log(newDB));
- 
-      }
-
-      console.log(newItem);
+     // console.log(newItem);
   
       onAddItems(newItem);
-      addDbRow()
-  
+
       setDescription("");
       setQuantity(1);
     }
