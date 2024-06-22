@@ -1,28 +1,22 @@
 {
   "list": [
     {
-      "description": "asdasd",
-      "quantity": 1,
-      "packed": true,
+      "description": "shirts",
+      "quantity": 5,
+      "packed": false,
       "id": 1
     },
     {
-      "description": "asdasdasd13",
-      "quantity": 6,
-      "packed": true,
+      "description": "sadad",
+      "quantity": 1,
+      "packed": false,
       "id": 2
     },
     {
-      "description": "asdasd",
-      "quantity": 1,
+      "description": "socks",
+      "quantity": 9,
       "packed": false,
-      "id": 4
-    },
-    {
-      "description": "sadasd",
-      "quantity": 1,
-      "packed": false,
-      "id": 5
+      "id": 3
     }
   ]
 }

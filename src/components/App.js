@@ -7,41 +7,22 @@ import Stats from "./Stats";
 const dbName = 'list';
  
 const fetchDB = async ( dbName ) => fetch(`http://localhost:3000/${dbName}`).then((response) => response.json()); 
-
 const fetchDBbyId = async ( dbName, id ) => fetch(`http://localhost:3000/${dbName}/${id}`).then((response) => response.json());
-
 const deleteItem = async (itemId) => fetch(`http://localhost:3000/${dbName}/${itemId}`, {method: "DELETE",}).then((response) => response.json()); 
-
-const updateItem = async ( itemId, updateItemPacked ) =>
-    fetch(`http://localhost:3000/${dbName}/${itemId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updateItemPacked),
-    }).then((response) => response.json()); 
-
-const addItem = async ( newItemRow ) =>
-  fetch('http://localhost:3000/list', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(newItemRow),
-  })
-  .then(response => response.json());
+const updateItem = async ( itemId, updateItemPacked ) => fetch(`http://localhost:3000/${dbName}/${itemId}`, {method: 'PATCH',headers: {'Content-Type': 'application/json',},body: JSON.stringify(updateItemPacked),}).then((response) => response.json()); 
+const addItem = async ( newItemRow ) => fetch(`http://localhost:3000/${dbName}`, {method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify(newItemRow),}).then(response => response.json());
 
 const list = await fetchDB( dbName );
 
-function removeAllItems(list){
-  for (const item of list) {
-    deleteItem( item.id );
-  }
-}
- 
 export default function App(){
   const [ items, setItems ] = useState(list);
 
+  function removeAllItems(list){
+    for (const item of list) {
+      deleteItem( item.id );
+    }
+  }
+ 
   function handleAdditems(item){
     const newItemRow = { description: item.description, quantity: item.quantity, packed: false };
 
@@ -66,7 +47,6 @@ export default function App(){
           item.id === id ? { ...item, packed: !item.packed } : item
         )
       );
-
       updateItem( id, updateItemPacked );
 
   }
