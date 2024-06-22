@@ -5,12 +5,13 @@ import PackingList from "./PackingList";
 import Stats from "./Stats";
 
 const dbName = 'list';
+const url = 'http://localhost:3000'
  
-const fetchDB = async ( dbName ) => fetch(`http://localhost:3000/${dbName}`).then((response) => response.json()); 
-const fetchDBbyId = async ( dbName, id ) => fetch(`http://localhost:3000/${dbName}/${id}`).then((response) => response.json());
-const deleteItem = async (itemId) => fetch(`http://localhost:3000/${dbName}/${itemId}`, {method: "DELETE",}).then((response) => response.json()); 
-const updateItem = async ( itemId, updateItemPacked ) => fetch(`http://localhost:3000/${dbName}/${itemId}`, {method: 'PATCH',headers: {'Content-Type': 'application/json',},body: JSON.stringify(updateItemPacked),}).then((response) => response.json()); 
-const addItem = async ( newItemRow ) => fetch(`http://localhost:3000/${dbName}`, {method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify(newItemRow),}).then(response => response.json());
+const fetchDB = async ( dbName ) => fetch(`${url}/${dbName}`).then((response) => response.json()); 
+const fetchDBbyId = async ( dbName, id ) => fetch(`${url}/${dbName}/${id}`).then((response) => response.json());
+const deleteItem = async (itemId) => fetch(`${url}/${dbName}/${itemId}`, {method: "DELETE",}).then((response) => response.json()); 
+const updateItem = async ( itemId, updateItemPacked ) => fetch(`${url}/${dbName}/${itemId}`, {method: 'PATCH',headers: {'Content-Type': 'application/json',},body: JSON.stringify(updateItemPacked),}).then((response) => response.json()); 
+const addItem = async ( newItemRow ) => fetch(`${url}/${dbName}`, {method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify(newItemRow),}).then(response => response.json());
 
 const list = await fetchDB( dbName );
 

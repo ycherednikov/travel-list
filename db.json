@@ -1,22 +1,10 @@
 {
   "list": [
     {
-      "description": "shirts",
-      "quantity": 5,
+      "description": "socks",
+      "quantity": 4,
       "packed": false,
       "id": 1
-    },
-    {
-      "description": "sadad",
-      "quantity": 1,
-      "packed": false,
-      "id": 2
-    },
-    {
-      "description": "socks",
-      "quantity": 9,
-      "packed": false,
-      "id": 3
     }
   ]
 }
