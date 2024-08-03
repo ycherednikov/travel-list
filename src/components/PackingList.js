@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Item from "./Item";
+import Loading from "./Loading";
 
-export default function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
+export default function PackingList({ items, isLoading, onDeleteItem, onToggleItem, onClearList }) {
 
   const [sortBy, setSortBy] = useState("input");
+
 
   let sortedItems;
 
@@ -21,15 +23,18 @@ export default function PackingList({ items, onDeleteItem, onToggleItem, onClear
 
   return (
     <div className="list">
+      { isLoading ? <Loading /> :
       <ul>
-        {sortedItems.map((item) => (
+        {sortedItems.map((item, index) => (
           <Item
-            item={item}
+             item={item}
             onDeleteItem={onDeleteItem}
             onToggleItem={onToggleItem}
-            key={item.id} />
+            key={index} 
+          />
         ))}
       </ul>
+       }
       <div className="actions">
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="input">Sort by input order</option>
